@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/tv_nameRepositories"
@@ -35,8 +35,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/civ_imageUser"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/icon_user"
         app:civ_circle_background_color="#C5C6C8"
@@ -48,6 +48,8 @@
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#3333ff"
+        android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="@+id/civ_imageUser"
         app:layout_constraintRight_toRightOf="@id/civ_imageUser"
         app:layout_constraintTop_toBottomOf="@id/civ_imageUser"
@@ -57,28 +59,49 @@
         android:id="@+id/tv_lastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="10sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_username"
         tools:text="Nome Sobrename" />
 
-    <ImageView
-        android:id="@+id/tv_fork"
+    <Button
+        android:id="@+id/tv_numberFork"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/icon_fork"
-        android:drawableLeft="40dp"
-
-        android:padding="2dp"
+        android:layout_marginTop="4dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/icon_fork"
+        android:drawablePadding="2dp"
+        android:enabled="false"
+        android:gravity="center"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:padding="8dp"
+        android:textColor="#e3c989"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/tv_numberFavorite"
         app:layout_constraintTop_toBottomOf="@id/tv_description"
         tools:text="640" />
 
-    <TextView
+    <Button
         android:id="@+id/tv_numberFavorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/tv_fork"
+        android:layout_marginTop="4dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/icon_favorite"
+        android:drawablePadding="4dp"
+        android:enabled="false"
+        android:gravity="center"
+        android:minHeight="12dp"
+        android:minWidth="0dp"
+        android:padding="8dp"
+        android:textColor="#e3c989"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/tv_numberFork"
         app:layout_constraintTop_toBottomOf="@id/tv_description"
         tools:text="98" />
 
