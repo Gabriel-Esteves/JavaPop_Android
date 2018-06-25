@@ -1,48 +1,51 @@
 package com.example.javapop.java_pop
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.javapop.java_pop.model.Repository
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_viewholder.view.*
 
-class RepositoriesAdapter(items: ArrayList<String>,
-                          context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val items = items
-    private val context = context
+class RepositoriesAdapter : RecyclerView.Adapter<RepositoriesAdapter.RepositoriesViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.list_viewholder, parent, false)
-        return ViewHolder(view)
-        TODO("not impleme¥nted") //To change body of created functions use File | Settings | File Templates.
+    private lateinit var items: ArrayList<Repository>
+
+    fun setItems(items: ArrayList<Repository>) {
+        this.items.clear()
+        this.items = items
+        notifyDataSetChanged()
     }
 
-
-    override fun getItemCount(): Int {
-        return items.size
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): RepositoriesViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_viewholder, parent, false)
+        return RepositoriesViewHolder(view)
     }
 
-    override fun onCreateViewHolder(view: View, position: Int): RecyclerView.ViewHolder {
+    override fun getItemCount() = items.size
 
+    override fun onBindViewHolder(holder: RepositoriesViewHolder, position: Int) {
+        val item = items[position]
+        holder.bindItem(item)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        holder?.nameRepositories?.text = items.get(position)
-        holder?.description?.text = items.get(position)
-        holder?.userName?.text = items.get(position)
-        holder?.lastName?.text = items.get(position)
-        holder?.numberFork?.text = items.get(position)
-        holder?.numberFavorite?.text = items.get(position)
+    inner class RepositoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bindItem(item: Repository) {
+            with(itemView) {
+                tv_nameRepositories?.text = item.name
+                tv_description?.text = item.description
+                tv_numberFavorite.text = item.stargazersCount.toString()
+                tv_numberFork.text = item.forksCount.toString()
+
+                val owner = item.owner
+                tv_username.text = owner.login
+
+                // Glide
+                Picasso.with(itemView.context).load(item.owner.avatarUrl).into(civ_imageUser)
+            }
+
+        }
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameRepositories = itemView.tv_nameRepositories
-        val description = itemView.tv_description
-        val userName = itemView.tv_username
-        val lastName = itemView.tv_lastName
-        val numberFork = itemView.tv_numberFork
-        val numberFavorite = itemView.tv_numberFavorite
-
-    }
 }

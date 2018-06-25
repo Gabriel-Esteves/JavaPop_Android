@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="16dp">
 
     <TextView
@@ -41,9 +41,9 @@
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
         android:textColor="#3333ff"
         android:textSize="12sp"
-        android:layout_marginLeft="12dp"
         app:layout_constraintBottom_toTopOf="@id/tv_lastName"
         app:layout_constraintLeft_toRightOf="@+id/civ_imageUser"
         app:layout_constraintTop_toBottomOf="@id/civ_imageUser"
@@ -53,11 +53,21 @@
         android:id="@+id/tv_lastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
         android:layout_marginLeft="12dp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@id/civ_imageUser"
         app:layout_constraintLeft_toRightOf="@id/civ_imageUser"
         app:layout_constraintTop_toBottomOf="@id/tv_username"
         tools:text="Nome Sobrename" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/civ_imageUser" />
 
 </android.support.constraint.ConstraintLayout>
