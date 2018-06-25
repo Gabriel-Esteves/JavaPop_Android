@@ -1,16 +1,17 @@
-package com.example.javapop.java_pop
+package com.example.javapop.java_pop.ui
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.javapop.java_pop.model.Repository
+import com.example.javapop.java_pop.R
+import com.example.javapop.java_pop.data.model.Repository
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_viewholder.view.*
 
 class RepositoriesAdapter : RecyclerView.Adapter<RepositoriesAdapter.RepositoriesViewHolder>() {
 
-    private lateinit var items: ArrayList<Repository>
+    private var items = ArrayList<Repository>()
 
     fun setItems(items: ArrayList<Repository>) {
         this.items.clear()
@@ -42,10 +43,8 @@ class RepositoriesAdapter : RecyclerView.Adapter<RepositoriesAdapter.Repositorie
                 tv_username.text = owner.login
 
                 // Glide
-                Picasso.with(itemView.context).load(item.owner.avatarUrl).into(civ_imageUser)
+                Picasso.with(itemView.context).load(item.owner.avatarUrl).placeholder(R.drawable.icon_user).error(R.drawable.icon_user).into(civ_imageUser)
             }
-
         }
     }
-
 }
