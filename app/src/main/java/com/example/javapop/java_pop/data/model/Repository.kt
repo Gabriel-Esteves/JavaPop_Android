@@ -9,3 +9,7 @@ data class Repository(
         @field:SerializedName("forks_count") val forksCount: Int,
         @field:SerializedName("owner") val owner: Owner
 )
+
+data class RepositoryResponse(
+        @field:SerializedName("items") val items: ArrayList<Repository>
+)

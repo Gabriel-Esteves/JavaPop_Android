@@ -1,4 +1,4 @@
-package com.example.javapop.java_pop.ui
+package com.example.javapop.java_pop.ui.repository
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
