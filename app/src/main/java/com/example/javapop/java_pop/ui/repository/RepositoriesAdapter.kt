@@ -9,7 +9,9 @@ import com.example.javapop.java_pop.data.model.Repository
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_viewholder.view.*
 
-class RepositoriesAdapter : RecyclerView.Adapter<RepositoriesAdapter.RepositoriesViewHolder>() {
+class RepositoriesAdapter(
+        private val listener: OnRepositorySelectedListener
+) : RecyclerView.Adapter<RepositoriesAdapter.RepositoriesViewHolder>() {
 
     private var items = ArrayList<Repository>()
 
@@ -29,6 +31,10 @@ class RepositoriesAdapter : RecyclerView.Adapter<RepositoriesAdapter.Repositorie
     override fun onBindViewHolder(holder: RepositoriesViewHolder, position: Int) {
         val item = items[position]
         holder.bindItem(item)
+
+        holder.itemView.setOnClickListener {
+            listener.itemSelected(item)
+        }
     }
 
     inner class RepositoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -40,11 +46,15 @@ class RepositoriesAdapter : RecyclerView.Adapter<RepositoriesAdapter.Repositorie
                 tv_numberFork.text = item.forksCount.toString()
 
                 val owner = item.owner
-                tv_username.text = owner.login
+                tv_username_Request.text = owner.login
 
                 // Glide
                 Picasso.with(itemView.context).load(item.owner.avatarUrl).placeholder(R.drawable.icon_user).error(R.drawable.icon_user).into(civ_imageUser)
             }
         }
+    }
+
+    interface OnRepositorySelectedListener {
+        fun itemSelected(item: Repository)
     }
 }

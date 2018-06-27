@@ -8,9 +8,9 @@ import com.example.javapop.java_pop.data.model.Repository
 import com.example.javapop.java_pop.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class RepositoryActivity : BaseActivity(), RepositoryView {
+class RepositoryActivity : BaseActivity(), RepositoryView, RepositoriesAdapter.OnRepositorySelectedListener {
 
-    private val adapter = RepositoriesAdapter()
+    private val adapter = RepositoriesAdapter(this)
 
     private lateinit var presenter: RepositoryPresenter
 
@@ -39,6 +39,11 @@ class RepositoryActivity : BaseActivity(), RepositoryView {
 
     override fun showMessage(message: String?) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun itemSelected(item: Repository) {
+        // TODO Abrir a segunda activity passando o item no bundle
+
     }
 
 //

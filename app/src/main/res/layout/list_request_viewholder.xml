@@ -28,7 +28,7 @@
         tools:text="Body do pull request iorem ipsum dolor sit amet lorem\nipsum dolor..." />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_imageUser"
+        android:id="@+id/civ_imageUserRequest"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="4dp"
@@ -38,15 +38,15 @@
         app:layout_constraintTop_toBottomOf="@id/tv_description_request" />
 
     <TextView
-        android:id="@+id/tv_username"
+        android:id="@+id/tv_username_Request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:textColor="#3333ff"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@id/tv_lastName"
-        app:layout_constraintLeft_toRightOf="@+id/civ_imageUser"
-        app:layout_constraintTop_toBottomOf="@id/civ_imageUser"
+        app:layout_constraintLeft_toRightOf="@+id/civ_imageUserRequest"
+        app:layout_constraintTop_toBottomOf="@id/civ_imageUserRequest"
         tools:text="username" />
 
     <TextView
@@ -55,9 +55,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@id/civ_imageUser"
-        app:layout_constraintLeft_toRightOf="@id/civ_imageUser"
-        app:layout_constraintTop_toBottomOf="@id/tv_username"
+        app:layout_constraintBottom_toTopOf="@id/civ_imageUserRequest"
+        app:layout_constraintLeft_toRightOf="@id/civ_imageUserRequest"
+        app:layout_constraintTop_toBottomOf="@id/tv_username_Request"
         tools:text="Nome Sobrename" />
 
     <View
@@ -68,6 +68,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/civ_imageUser" />
+        app:layout_constraintTop_toBottomOf="@+id/civ_imageUserRequest" />
 
 </android.support.constraint.ConstraintLayout>
