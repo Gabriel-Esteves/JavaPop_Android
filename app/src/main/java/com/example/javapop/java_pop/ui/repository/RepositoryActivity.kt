@@ -45,8 +45,6 @@ class RepositoryActivity : BaseActivity(), RepositoryView, RepositoriesAdapter.O
     }
 
     override fun itemSelected(item: Repository) {
-        Toast.makeText(this, "Item Clicado", Toast.LENGTH_SHORT.minus(1000)).show()
-
         val intent = Intent(this, PullRequestActivity::class.java)
         intent.putExtra("repository", item)
         startActivity(intent)
