@@ -12,8 +12,8 @@ class GithubRepository {
         return githubRepository.getRepositories()
     }
 
-    fun getPullRequestByRepository(): Observable<List<PullRequest>> {
-        return githubRepository.getPullRequestByRepository()
+    fun getPullRequestByRepository(owner: String, repository: String): Observable<List<PullRequest>> {
+        return githubRepository.getPullRequestByRepository(owner, repository)
     }
 
 }

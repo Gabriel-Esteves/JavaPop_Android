@@ -13,17 +13,23 @@ class PullRequestAdapter(
         private val listener: OnRequestSelectedListener
 ) : RecyclerView.Adapter<PullRequestAdapter.RequestViewHolder>() {
 
-    private var itens = ArrayList<PullRequest>()
+    private var items = ArrayList<PullRequest>()
+
+    fun setItems(items: List<PullRequest>) {
+        this.items.clear()
+        this.items.addAll(items)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): RequestViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_request_viewholder, parent, false)
         return RequestViewHolder(view)
     }
 
-    override fun getItemCount() = itens.size
+    override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: RequestViewHolder, position: Int) {
-        val item = itens[position]
+        val item = items[position]
         holder.bindItem(item)
 
         holder.itemView.setOnClickListener {

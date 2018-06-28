@@ -1,11 +1,14 @@
 package com.example.javapop.java_pop.ui.repository
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.example.javapop.java_pop.R
 import com.example.javapop.java_pop.data.model.Repository
 import com.example.javapop.java_pop.ui.base.BaseActivity
+import com.example.javapop.java_pop.ui.pull_request.PullRequestActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class RepositoryActivity : BaseActivity(), RepositoryView, RepositoriesAdapter.OnRepositorySelectedListener {
@@ -42,11 +45,13 @@ class RepositoryActivity : BaseActivity(), RepositoryView, RepositoriesAdapter.O
     }
 
     override fun itemSelected(item: Repository) {
-        // TODO Abrir a segunda activity passando o item no bundle
+        Toast.makeText(this, "Item Clicado", Toast.LENGTH_SHORT.minus(1000)).show()
 
+        val intent = Intent(this, PullRequestActivity::class.java)
+        intent.putExtra("repository", item)
+        startActivity(intent)
     }
 
-//
 //    private fun getItems(): ArrayList<Repository> {
 //        return arrayListOf(
 //                Repository("Repo 1", "description", 1215, 154, Owner("owner1", "https://avatars1.githubusercontent.com/u/582346?v=4")),

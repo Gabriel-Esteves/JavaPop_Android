@@ -6,5 +6,6 @@ data class PullRequest(
         @field:SerializedName("title") val title: String,
         @field:SerializedName("created_at") val created_at: String,
         @field:SerializedName("body") val body: String,
-        @field:SerializedName("user") val owner: Owner
+        @field:SerializedName("user") val owner: Owner,
+        @field:SerializedName("html_url") val url: String
 )
