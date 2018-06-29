@@ -8,8 +8,8 @@ class GithubRepository {
 
     private val githubRepository = RetrofitClient.getRetrofitClient()
 
-    fun getRepositories(): Observable<RepositoryResponse> {
-        return githubRepository.getRepositories()
+    fun getRepositories(page: Int): Observable<RepositoryResponse> {
+        return githubRepository.getRepositories(page)
     }
 
     fun getPullRequestByRepository(owner: String, repository: String): Observable<List<PullRequest>> {

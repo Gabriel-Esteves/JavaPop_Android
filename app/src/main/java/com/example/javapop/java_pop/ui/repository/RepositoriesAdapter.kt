@@ -16,8 +16,7 @@ class RepositoriesAdapter(
     private var items = ArrayList<Repository>()
 
     fun setItems(items: ArrayList<Repository>) {
-        this.items.clear()
-        this.items = items
+        this.items.addAll(items)
         notifyDataSetChanged()
     }
 

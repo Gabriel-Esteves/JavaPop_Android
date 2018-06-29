@@ -6,9 +6,11 @@ import io.reactivex.schedulers.Schedulers
 
 class RepositoryPresenter(val view: RepositoryView): BasePresenter() {
 
-    override fun subscribe() {
+    override fun subscribe() {}
+
+    fun getRepository(page: Int) {
         view.onLoadingStart()
-        addDisposable(githubRepository.getRepositories()
+        addDisposable(githubRepository.getRepositories(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
