@@ -15,14 +15,26 @@ class RepositoriesAdapter(
 
     private var items = ArrayList<Repository>()
 
+    companion object {
+        private val TYPE_HEADER = 0
+        private val TYPE_ITEM = 1
+    }
+
     fun setItems(items: ArrayList<Repository>) {
         this.items.addAll(items)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): RepositoriesViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_viewholder, parent, false)
-        return RepositoriesViewHolder(view)
+        if (position == TYPE_ITEM) {
+        val VHItem = LayoutInflater.from(parent.context).inflate(R.layout.list_viewholder, parent, false)
+        return RepositoriesViewHolder(VHItem)
+        } else if (position == TYPE_HEADER) {
+           val VHHeader = LayoutInflater.from(parent.context).inflate(R.layout.progressbar_viewholder, parent, false)
+        return RepositoriesViewHolder(VHHeader)
+        }
+
+        throw RuntimeException("Error " + position)
     }
 
     override fun getItemCount() = items.size
