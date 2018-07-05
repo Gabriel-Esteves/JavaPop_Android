@@ -9,7 +9,7 @@ class RepositoryPresenter(val view: RepositoryView): BasePresenter() {
     override fun subscribe() {}
 
     fun getRepository(page: Int) {
-        view.onLoadingStart()
+        // view.onLoadingStart()
         addDisposable(githubRepository.getRepositories(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -20,7 +20,7 @@ class RepositoryPresenter(val view: RepositoryView): BasePresenter() {
                     // ERRO
                     view.showMessage(it.message)
                 }, {
-                    view.onLoadingFinish()
+            //        view.onLoadingFinish()
                 }))
     }
 

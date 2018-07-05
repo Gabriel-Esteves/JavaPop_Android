@@ -11,13 +11,13 @@ import kotlinx.android.synthetic.main.list_viewholder.view.*
 
 class RepositoriesAdapter(
         private val listener: OnRepositorySelectedListener
-) : RecyclerView.Adapter<RepositoriesAdapter.RepositoriesViewHolder>() {
+) : RecyclerView.Adapter<RepositoriesAdapter.GenericViewHolder>() {
 
     private var items = ArrayList<Repository>()
 
     companion object {
-        private val TYPE_HEADER = 0
-        private val TYPE_ITEM = 1
+        private var TYPE_LOADING = 1
+        private var TYPE_ITEM = 2
     }
 
     fun setItems(items: ArrayList<Repository>) {
@@ -25,13 +25,13 @@ class RepositoriesAdapter(
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, position: Int): RepositoriesViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): GenericViewHolder {
         if (position == TYPE_ITEM) {
-        val VHItem = LayoutInflater.from(parent.context).inflate(R.layout.list_viewholder, parent, false)
-        return RepositoriesViewHolder(VHItem)
-        } else if (position == TYPE_HEADER) {
-           val VHHeader = LayoutInflater.from(parent.context).inflate(R.layout.progressbar_viewholder, parent, false)
-        return RepositoriesViewHolder(VHHeader)
+            val VHItem = LayoutInflater.from(parent.context).inflate(R.layout.list_viewholder, parent, false)
+            return RepositoriesViewHolder(VHItem)
+        } else if (position == TYPE_LOADING) {
+            val VHHeader = LayoutInflater.from(parent.context).inflate(R.layout.progressbar_viewholder, parent, false)
+            return LoadingViewHolder(VHHeader)
         }
 
         throw RuntimeException("Error " + position)
@@ -39,16 +39,31 @@ class RepositoriesAdapter(
 
     override fun getItemCount() = items.size
 
-    override fun onBindViewHolder(holder: RepositoriesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GenericViewHolder, position: Int) {
         val item = items[position]
-        holder.bindItem(item)
+        if (holder is RepositoriesViewHolder) {
+            holder.bindItem(item)
 
-        holder.itemView.setOnClickListener {
-            listener.itemSelected(item)
+            holder.itemView.setOnClickListener {
+                listener.itemSelected(item)
+            }
         }
     }
 
-    inner class RepositoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    override fun getItemViewType(position: Int): Int {
+        val item = items[position]
+        return if (item is Repository) {
+            TYPE_ITEM
+        } else {
+            TYPE_LOADING
+        }
+    }
+
+    open class GenericViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    inner class LoadingViewHolder(itemView: View) : GenericViewHolder(itemView)
+
+    inner class RepositoriesViewHolder(itemView: View) : GenericViewHolder(itemView) {
         fun bindItem(item: Repository) {
             with(itemView) {
                 tv_nameRepositories?.text = item.name
