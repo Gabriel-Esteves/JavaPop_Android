@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp" >
+
+    <TextView
+        android:id="@+id/tv_nameRepositories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="0dp"
+        android:textColor="#3333ff"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Nome Repositório" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="14dp"
+        android:padding="0dp"
+        android:textColor="#000000"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/civ_imageUser"
+        app:layout_constraintTop_toBottomOf="@id/tv_nameRepositories"
+        tools:text="Descrição do repositorio Iorem ipsum\ndolorsit amet lorem ipsum dolor... " />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civ_imageUser"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/icon_user"
+        app:civ_circle_background_color="#C5C6C8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_username_Request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#3333ff"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@+id/civ_imageUser"
+        app:layout_constraintRight_toRightOf="@id/civ_imageUser"
+        app:layout_constraintTop_toBottomOf="@id/civ_imageUser"
+        tools:text="username" />
+
+    <TextView
+        android:id="@+id/tv_lastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_username_Request"
+        app:layout_constraintStart_toStartOf="@+id/tv_username_Request"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username_Request"
+        tools:text="Nome Sobrename" />
+
+    <Button
+        android:id="@+id/tv_numberFork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/icon_fork"
+        android:drawablePadding="2dp"
+        android:enabled="false"
+        android:gravity="center"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:padding="8dp"
+        android:textColor="#e3c989"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_numberFavorite"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        tools:text="640" />
+
+    <Button
+        android:id="@+id/tv_numberFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/icon_favorite"
+        android:drawablePadding="4dp"
+        android:enabled="false"
+        android:gravity="center"
+        android:minHeight="12dp"
+        android:minWidth="0dp"
+        android:padding="8dp"
+        android:textColor="#e3c989"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/tv_numberFork"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        tools:text="98" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_numberFork" />
+
+</android.support.constraint.ConstraintLayout>
